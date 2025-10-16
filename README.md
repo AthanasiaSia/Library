@@ -13,7 +13,7 @@ The goal of the project is to **practice Object-Oriented Programming (OOP)** con
 
 ---
 
-## 🧩 Features
+## Features
 - Create and manage **Users** and **Books**
 - Each user can **borrow** and **return** books
 - The system keeps track of each user’s borrowed books
