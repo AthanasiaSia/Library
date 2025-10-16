@@ -1,0 +1,60 @@
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+public class User {
+    private String name;
+    private LocalDate birthDate;
+    public List<Book> borrowedBooks;
+
+    public User(String name, String birthDate){ //constructor
+        this.name = name;
+        this.birthDate = LocalDate.parse(birthDate);
+        this.borrowedBooks = new ArrayList<>();
+    }
+
+    //getters
+    public String getName(){
+        return this.name;
+    }
+    public LocalDate getBirthDate(){
+        return this.birthDate;
+    }    
+    public List<Book> getBorrowedBooks(){
+        return this.borrowedBooks;
+    }
+
+    public void borrow(Book book){
+        if (!book.isBorrowed()){
+            borrowedBooks.add(book);
+            book.borrow();
+            System.out.println(name + " borrowed " + book.getTitle());
+        } else {
+            System.out.println("Sorry the book " + book.getTitle() + " is already borrowed.");
+        }
+    }
+
+    public void returnBook(Book book){
+        if (borrowedBooks.remove(book)){
+            book.returnBook();
+            System.out.println(name + " returned " + book.getTitle());
+        } else {
+            System.out.println(name + " doesn't have this book.");
+        }
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("User: ").append(name).append(" (Born: ").append(birthDate).append(")\n");
+        if (borrowedBooks.isEmpty()) {
+            sb.append("No borrowed books.");
+        } else {
+            sb.append("Borrowed books:\n");
+            for (Book b : borrowedBooks) {
+                sb.append(b.toString()).append("\n");
+            }
+        }
+        return sb.toString();
+    }
+}

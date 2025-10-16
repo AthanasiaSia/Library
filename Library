@@ -1,0 +1,30 @@
+public class Library {
+    public static void main(String[] args){
+        // Δημιουργία βιβλίων
+        Book carmilla = new Book("Carmilla", "Sheridan Le Fanu", 270);
+        Book dracula = new Book("Dracula", "Bram Stoker", 418);
+
+        // Δημιουργία χρηστών
+        User maria = new User("Maria", "1998-05-20");
+        User john = new User("John", "1995-09-12");
+
+        // Δανεισμός βιβλίων
+        maria.borrow(carmilla);
+        john.borrow(dracula);
+
+        // Προσπάθεια να ξαναδανειστεί ήδη δανεισμένο βιβλίο
+        john.borrow(carmilla);
+
+        // Εμφάνιση στοιχείων
+        System.out.println("\n--- Library Status ---");
+        System.out.println(maria);
+        System.out.println();
+        System.out.println(john);
+
+        // Επιστροφή βιβλίου
+        maria.returnBook(carmilla);
+
+        System.out.println("\n--- After Returning ---");
+        System.out.println(maria);
+    }
+}

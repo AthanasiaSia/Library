@@ -1,0 +1,40 @@
+public class Book {
+    private String author;
+    private String title;
+    private int pageCount;
+    private boolean isBorrowed;
+
+    public Book (String title, String author, int pageCount){ //constructor
+        this.title = title;
+        this.author = author;
+        this.pageCount = pageCount;
+        this.isBorrowed = false;
+    }
+
+    public String getTitle() {
+        return this.title;
+    }
+    public String getAuthor() {
+        return this.author;
+    }
+    public int pageCount() {
+        return this.pageCount;
+    }
+
+    public boolean isBorrowed(){
+        return isBorrowed;
+    }
+
+    public void borrow(){
+        this.isBorrowed = true;
+    }
+
+    public void returnBook(){
+        this.isBorrowed = false;
+    }
+
+    @Override
+    public String toString(){
+        return String.format("%s by %s (%d pages)%s", title, author, pageCount, isBorrowed? "[BORROWED]" : "");
+    }
+}
